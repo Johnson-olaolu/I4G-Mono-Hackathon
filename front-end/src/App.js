@@ -3,6 +3,7 @@ import LoginScreen from './screens/LoginScreen';
 import OnBoardingScreen from './screens/OnBoardingScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import UserHomeDashboardScreen from './screens/UserHomeDashboardScreen';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 	return (

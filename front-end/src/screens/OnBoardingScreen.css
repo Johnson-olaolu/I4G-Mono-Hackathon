@@ -1,0 +1,263 @@
+/* *{
+    border: 1px solid red;
+} */
+.OnBoardingScreen{
+    width: 100%;
+    margin: 0px;
+    padding: 0%;
+}
+.nav{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 4px 4px #ACACAC25;
+
+}
+.nav .navbar{
+    width: 100%;
+    margin: 20px;
+    max-width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.nav .navbar .navLinks{
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.nav .navbar .navLinks li{
+    margin-left: 100px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
+
+
+.home{
+    max-width: 1280px;
+    margin: auto;
+}
+
+.home .hero{
+    align-items: center;
+}
+.OnBoardingScreen h2{
+    font-size: 24px;
+    color: #440079;
+    font-weight: 700;
+    margin: 0%;
+    margin-top: 20px;
+}
+.OnBoardingScreen h1{
+    font-size: 42px;
+    color: #333333;
+    font-weight: 600;
+    margin: 0%;
+    margin-top: 20px;
+}
+.OnBoardingScreen p{
+    font-size: 24px;
+    color: #888888;
+    font-weight: 300;
+    margin: 0%;
+    margin-top: 20px;
+}
+.OnBoardingScreen button{
+    font-size: 22px;
+    color: #fff;
+    font-weight: 400;
+    background-color: #440079;
+    height: 60px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 10px;
+    border-width: 0px;
+    margin-top: 20px;
+}
+.home {
+    font-size: 24   px;
+    color: #888;
+    font-weight: 300;
+}
+.heroRow {
+    margin: 0%;
+    padding: 0%;
+    align-items: center;
+    padding: 20px;
+}
+.heroRow img{
+    max-width: 100%;
+}
+
+
+
+/* mockuo */
+
+.mockup{
+    margin: auto;
+    justify-content: center;
+}
+.mockup img{
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+
+
+/* account */
+.account{
+    background-color: #f8f8f8;
+    width: 100%;
+    padding-top: 65px;
+    padding-bottom: 120px;
+}
+.account h3{
+    font-size: 40px;
+    color: #000;
+    align-items: center;
+    text-align: center;
+
+}
+.account img{
+    margin: auto;
+}
+.account .container{
+    max-width: 1280px;
+    margin: auto;
+}
+.account .accountRow{
+    margin: 0%;
+    padding: 0%;
+    margin-top: 100px;
+
+}
+
+
+/* transactions */
+.transactions{
+    width: 100%;
+    padding-top: 65px;
+    padding-bottom: 120px;
+}
+
+.transactions img{
+    margin: auto;
+}
+.transactions .container{
+    max-width: 1280px;
+    margin: auto;
+}
+.transactions .transactionsRow{
+    margin: 0%;
+    padding: 0%;
+    margin-top: 100px;
+
+}
+
+
+/* statistics */
+.statistics{
+    background-color: #f8f8f8;
+    width: 100%;
+    padding-top: 65px;
+    padding-bottom: 120px;
+}
+
+.statistics img{
+    margin: auto;
+}
+.statistics .container{
+    max-width: 1280px;
+    margin: auto;
+}
+.statistics .statisticsRow{
+    margin: 0%;
+    padding: 0%;
+    margin-top: 100px;
+
+}
+
+
+
+/* getStarted */
+.getStarted {
+    background-image: url('https://res.cloudinary.com/dmixz7eur/image/upload/v1639334805/Rectangle_47_g43roa.png');
+    text-align: center;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 143px;
+    padding-bottom: 143px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.getStarted h1{
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+
+/* footer */
+.footer{
+    width: 100%;
+    margin: 0%;
+    padding: 0px 20px;
+    min-height: 80px;
+    align-items: center;
+}
+
+.footer .footerRow{
+    max-width: 1280px;
+    margin: 0%;
+    padding: 0%;
+    margin: auto;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    flex-wrap: wrap;
+}
+.footer .footerRow p{
+    font-size: 14px;
+    margin: auto;
+    text-align: center;
+}
+
+.footer .footerRow .social{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+
+}
+
+
+@media only screen and (max-width: 500px) {
+
+    .OnBoardingScreen{
+        text-align: center;
+    }
+    .heroRow img{
+        display: none;
+    }
+    .hero{
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+    .mockup{
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+    .account img, .transactions img, .statistics img{
+        margin-bottom: 50px;
+    }
+    .footer p{
+        margin: 20px !important;
+    }
+}
