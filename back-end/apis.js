@@ -22,7 +22,7 @@ const getAccountId = (secretKey, authCode) => {
   });
 }
 
-//admin signup
+//admin signup handler
 router.post("/register", (req, res) => {
   const { firstName, lastName, userName, businessName, email, password } =
     req.body;
@@ -70,7 +70,7 @@ router.post("/register", (req, res) => {
   }
 });
 
-//admin login
+//admin login handler
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
   async function Login() {
@@ -117,7 +117,7 @@ router.post("/login", (req, res) => {
   }
 });
 
-//get user
+//get user handler
 router.get("/user/:id", userAuthenticated, async (req, res) => {
   const id = req.params.id;
   let user = await prisma.user.findUnique({
