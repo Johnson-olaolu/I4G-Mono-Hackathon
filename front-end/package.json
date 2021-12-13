@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "proxy": "https://I4G-hackathon.herokuapp.com",
   "private": true,
+  "engines": {
+    "npm" : "8.2.0",
+    "node" : "16.13.1"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",

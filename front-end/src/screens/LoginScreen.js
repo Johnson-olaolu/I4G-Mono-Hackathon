@@ -1,14 +1,28 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link , useHistory} from 'react-router-dom'
 import Header from '../components/Header'
 
-const LoginScreen = () => {
+const LoginScreen = ( {location}) => {
+    const history = useHistory()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [errorMsg, setErrorMsg] = useState(null)
+    const [state, setState] = useState(location.state)
 
     const onClickLogin = (e) => {
+        
         e.preventDefault()
+
+        if (email === "") {
+            setErrorMsg("Please Enter Email")
+            return;
+        }
+
+        if(password === "") {
+            setErrorMsg("Please Enter Password")
+            return;
+        }
         const data =  {
             email : email, 
             password : password
@@ -17,9 +31,21 @@ const LoginScreen = () => {
         axios.post("/login", data)
             .then(res => {
                 console.log(res)
+                if(state && state.newUser) {
+                    history.push("/dashboard/newbranch", {
+                        user : res.data.data.user
+                    })
+                }else {
+                    history.push("/dashboard", {
+                        user : res.data.data.user
+                    })
+                }
+                localStorage.setItem("accessToken", JSON.stringify(res.data.data.token))
+                localStorage.setItem("user", JSON.stringify(res.data.data.user))
             })
             .catch(err => {
                 console.log(err)
+                setErrorMsg("login unsuccessfull try again")
             })
     }
 
@@ -84,6 +110,31 @@ const LoginScreen = () => {
                             </div>
                         </div>
                         <div className="mx-auto max-w-md mt-8">
+                        {errorMsg ? 
+                            <div className=" text-sm text-left justify-between text-white bg-red-500 h-12 flex items-center p-4 rounded-md "
+                            role="alert"
+                          >
+                              <div className=" flex">
+                              <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              class="w-6 h-6 mx-2 stroke-current"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                              ></path>
+                            </svg>
+                            {errorMsg}
+                              </div>
+                            
+                            <button className = "font-black text-white float-right"
+                            onClick = {()=> {setErrorMsg(null)}}>Close</button>
+                          </div>
+                            : null}
                             <h4 className="text-gray-900 font-semibold text-2xl">Log in to your account</h4>
                             <div className="mt-8 flex justify-between">
                                 <div className=" w-48 rounded-lg flex items-center border border-gray-200 px-2 h-12 space-x-4">

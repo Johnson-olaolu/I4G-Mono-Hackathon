@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Header from '../components/Header'
 import axios from 'axios'
 
 const SignUpScreen = () => {
+    const history = useHistory()
     const [firstName, setfirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [password, setPassword] = useState("")
@@ -13,6 +14,7 @@ const SignUpScreen = () => {
     const [errorMsg, setErrorMsg] = useState(null)
 
     const onClickSubmit = (e) => { 
+        
         e.preventDefault()
         if(firstName === "") {
             setErrorMsg("Please Enter First Name")
@@ -55,9 +57,13 @@ const SignUpScreen = () => {
         axios.post("/register", data)
             .then(res => {
                 console.log(res)
+                history.push("/login", {
+                    "newUser" : true
+                })
             })
             .catch(err => {
                 console.error(err)
+                setErrorMsg("Could not Sign Up please try again")
             })
     }
     return (
@@ -122,10 +128,11 @@ const SignUpScreen = () => {
                         </div>
                         <div className="mx-auto max-w-md mt-8">
                             {errorMsg ? 
-                            <div className="block text-sm text-left text-white bg-red-500 h-12 flex items-center p-4 rounded-md "
+                            <div className=" text-sm text-left justify-between text-white bg-red-500 h-12 flex items-center p-4 rounded-md "
                             role="alert"
                           >
-                            <svg
+                              <div className=" flex">
+                              <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
                               viewBox="0 0 24 24"
@@ -139,6 +146,10 @@ const SignUpScreen = () => {
                               ></path>
                             </svg>
                             {errorMsg}
+                              </div>
+                            
+                            <button className = "font-black text-white float-right"
+                            onClick = {()=> {setErrorMsg(null)}}>Close</button>
                           </div>
                             : null}
                             <h4 className="text-gray-900 font-semibold text-2xl">Create Account</h4>
@@ -192,7 +203,7 @@ const SignUpScreen = () => {
                             <div className="mt-4">
                                 <span className=" text-gray-400">
                                     Already have an Account?
-                                    <Link className="text-primary1 ml-1" to="/login">Create Branch</Link>
+                                    <Link className="text-primary1 ml-1" to="/login">Login</Link>
                                 </span>
                             </div>
                         </div>

@@ -1,7 +1,12 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 
 const Header2 = () => {
+    const history = useHistory()
+    const onClickLogout = () => {
+        localStorage.removeItem("access_token")
+        history.push("/")
+    }
     return (
         <header className="header shadow-md relative">
             <div className=" h-20  max-w-7xl mx-auto flex items-center justify-between">
@@ -16,7 +21,7 @@ const Header2 = () => {
                     <ul className=" flex space-x-20 font-medium text-gray-700">
                         <li className=""><NavLink  to="/" >Home</NavLink></li>
                         <li className=""><NavLink  to="/" >Dashboard</NavLink></li>
-                        <li className=""><NavLink to="/" >Notifications</NavLink></li>
+                        <li className=" font-medium" onClick = {onClickLogout}><button >Logout</button></li>
                     </ul>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import {HashRouter as Router,Route} from 'react-router-dom'
+import {BrowserRouter as Router,Route} from 'react-router-dom'
 import AddBranchScreen from './screens/AddBranchScreen';
 import LoginScreen from './screens/LoginScreen';
 import OnBoardingScreen from './screens/OnBoardingScreen';
