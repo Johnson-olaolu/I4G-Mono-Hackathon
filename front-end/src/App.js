@@ -1,20 +1,23 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {HashRouter as Router,Route} from 'react-router-dom'
+import AddBranchScreen from './screens/AddBranchScreen';
 import LoginScreen from './screens/LoginScreen';
 import OnBoardingScreen from './screens/OnBoardingScreen';
 import SignUpScreen from './screens/SignUpScreen';
+import UserBranchDashboardScreen from './screens/UserBranchDashboardScreen';
 import UserHomeDashboardScreen from './screens/UserHomeDashboardScreen';
+import UserSingleBranchScreen from './screens/UserSingleBranchScreen';
 
 function App() {
 	return (
 		<div className="">
 			<Router>
-				<Routes>
-					<Route path = "/" exact element = {<OnBoardingScreen/>}/>
-					<Route path = "/login" element = {<LoginScreen/>}/>
-					<Route path = "/sign-up" element = {<SignUpScreen/>}/>
-					<Route path = "/dashboard" element = {<UserHomeDashboardScreen/>}/>
-					<Route path = "/dashboard/branch/:id" element = {<UserHomeDashboardScreen/>}/>
-				</Routes>
+					<Route path = "/" exact component = {OnBoardingScreen}/>
+					<Route path = "/login" component = {LoginScreen}/>
+					<Route path = "/sign-up" component = {SignUpScreen}/>
+					<Route path = "/dashboard" exact component = {UserHomeDashboardScreen}/>
+					<Route path = "/dashboard/branch" exact component = {UserBranchDashboardScreen} />
+					<Route path = "/dashboard/branch/:id" exact component = {UserSingleBranchScreen}/>
+					<Route path = "/dashboard/newbranch" exact component = {AddBranchScreen}/>
 			</Router>
 		</div>
 	);

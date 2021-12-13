@@ -19,3 +19,23 @@ body {
 .login-sign-up-box{
   box-shadow: 0px 4px 70px rgba(0, 0, 0, 0.15);
 }
+
+tbody tr td {
+  @apply  bg-gray-50 py-5
+}
+
+tbody tr td:first-child{
+  @apply pl-5 rounded-l-2xl
+}
+
+tbody tr td:last-child{
+  @apply pr-5 rounded-r-2xl
+}
+
+.sidebar {
+  flex:  0 0 18rem;
+}
+
+.nav-active div{
+  @apply border-l-white bg-primary2 text-white
+}

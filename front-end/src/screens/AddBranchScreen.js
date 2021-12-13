@@ -1,27 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import SidebarWrapper from '../components/SidebarWrapper'
-import MonoConnect from '@mono.co/connect.js';
+import { Link } from 'react-router-dom'
 
 import Avatar from '../images/avatar.svg'
 
-const UserHomeDashboardScreen = () => {
-    useEffect(() => {
-
-    }, [])
-
-    const monoConnect = React.useMemo(() => {
-        const monoInstance = new MonoConnect({
-            onClose: () => console.log('Widget closed'),
-            onLoad: () => console.log('Widget loaded successfully'),
-            onSuccess: ({ code }) => console.log(`Linked successfully: ${code}`),
-
-            key: "live_pk_rsvVbMIGeGx2FsAVP0c2"
-        })
-
-        monoInstance.setup()
-
-        return monoInstance;
-    }, [])
+const AddBranchScreen = () => {
+    const [branchName, setBranchName] = useState("")
+    const [branchAddress, setBranchAddress] = useState("")
+    const [branchDescription, setBranchDescription] = useState("")
+    const [monoSecretKey, setMonoSecretKey] = useState("")
+    const [monoPublicKey, setMonoPublicKey] = useState("")
+    
     return (
         <SidebarWrapper>
             <div className="flex bg-gray-50">
@@ -30,77 +19,35 @@ const UserHomeDashboardScreen = () => {
                         <h2 className=" text-gray-400">Hello Elise Welcome back 👋🏻</h2>
                         <p className=" text-gray-800 text-4xl" >Your Dashboard today</p>
                     </div>
-                    <div className="w-full bg-white mt-6 p-5 shadow-lg rounded-2xl">
-                        <div className="rounded-2xl h-16 p-2 grid grid-cols-3 bg-slate-50">
-                            <div className=" flex justify-center items-center text-gray-800 text-lg font-semibold rounded-2xl bg-white shadow-md">Transactions</div>
-                            <div className=" flex justify-center items-center text-gray-400 text-lg font-semibold rounded-2xl cursor-pointer">Branches</div>
-                            <div className=" flex justify-center items-center text-gray-400 text-lg font-semibold rounded-2xl cursor-pointer">Statistics</div>
-                        </div>
-                        <div className=" mt-4 flex text-gray-400 space-x-8">
-                            <div className="space-x-1">
-                                <input type="checkbox" name="" id="All" />
-                                <label className="font-medium" htmlFor="#All">All</label>
-                            </div>
-                            <div className="space-x-1">
-                                <input type="checkbox" name="" id="paidIn" />
-                                <label className="font-medium" htmlFor="#All">Paid In</label>
-                            </div>
-                            <div className="space-x-1">
-                                <input type="checkbox" name="" id="paidIn" />
-                                <label className="font-medium" htmlFor="#All">Paid Out</label>
-                            </div>
-                        </div>
-                        <div className="mt-4">
-                            <table className="w-full">
-                                <thead className="space-x-2 ">
-                                    <tr>
-                                        <th className="text-left text-gray-600 font-medium ">Your Transactions</th>
-                                        <th className="text-left text-gray-600 font-medium ">Branch</th>
-                                        <th className="text-left text-gray-600 font-medium ">Amount (₦)</th>
-                                        <th className="text-left text-gray-600 font-medium ">Type</th>
-                                        <th className="text-left text-gray-600 font-medium ">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr className=" space-x-2">
-                                        <td className="flex space-x-2 items-center">
-                                            <div className="">
-                                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="36" height="36" rx="8" fill="white" />
-                                                    <path d="M22.1667 21.3333V11.3333M10.5 24.6667H21.3333H10.5ZM10.5 21.3333H18H10.5ZM10.5 18H15.5H10.5ZM18.8333 18L22.1667 21.3333L18.8333 18ZM22.1667 21.3333L25.5 18L22.1667 21.3333Z" stroke="#008E13" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                            </div>
-                                            <div className="">
-                                                <h6 className=" text-sm font-semibold text-gray-800">61b6267c5c98002fc7b49d0d</h6>
-                                                <span className=" text-xs text-gray-600">04 Jan, 09:20AM</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            #0001
-                                        </td>
-                                        <td>
-                                            20,200
-                                        </td>
-                                        <td>
-                                            Transfer
-                                        </td>
-                                        <td>
-                                            <span className="w-16 py-1 rounded bg-green-200 text-green-600 text-xs flex items-center justify-center">Paid in</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
+                    <div className="flex-grow rounded-large2 bg-white shadow-lg">
+                        <div className="w-full p-10 mt-8">
+                            <h4 className="text-gray-800 font-semibold text-2xl">Add a new Branch</h4>
+                            <p className=" text-gray-400 text-sm my-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sequi blanditiis voluptatibus sed officiis id rem vero, at temporibus doloremque magni commodi minus quas asperiores voluptatum quam, explicabo, accusantium alias.</p>
+                            <form className="mt-5 space-y-7">
+                                <input type="text" value = {branchName} className=" w-full py-1 border-b border-gray-200 focus-visible:outline-none" placeholder="Branch Name" 
+                                onChange = {(e) => {setBranchName(e.target.value)}}/>
+                                <input type="text" value = {branchAddress} className=" w-full py-1 border-b border-gray-200 focus-visible:outline-none" placeholder="Branch Address" 
+                                onChange = {(e) => {setBranchAddress(e.target.value)}}/>
+                                <input type="text" value = {branchDescription} className=" w-full py-1 border-b border-gray-200 focus-visible:outline-none" placeholder="Branch Description" 
+                                onChange = {(e) => {setBranchDescription(e.target.value)}}/>
+                                <input type="password" value = {monoPublicKey} className=" w-full py-1 border-b border-gray-200 focus-visible:outline-none" placeholder="Mono Public Key" 
+                                onChange = {(e) => {setMonoPublicKey(e.target.value)}}/>
+                                <input type="password" value = {monoSecretKey} className=" w-full py-1 border-b border-gray-200 focus-visible:outline-none " placeholder="Mono Secret Key" 
+                                onChange = {(e) => {setMonoSecretKey(e.target.value)}}/>
+                                <button className="w-full h-12 bg-primary1 text-white font-medium rounded-xl" type="submit"
+                                onClick = {""}>Add Branch</button>
+                            </form>
                         </div>
                     </div>
+                    
                 </div>
                 <div className="sidebar w-72 bg-white p-8">
                     <div className=" flex justify-between items-center">
                         <div className=" flex space-x-4 items-center">
                             <img src={Avatar} alt="" className="" />
                             <div className="">
-                                <h4 className=" font-semibold text-gray-800 text-sm">Ade Ayobami</h4>
-                                <p className=" text-xs text-gray-400">GT Cunsulting</p>
+                                <h4 className=" font-semibold text-gray-800 text-sm">Branch ID</h4>
+                                <p className=" text-xs text-gray-400">#0001</p>
                             </div>
                         </div>
                         <div className="">
@@ -124,6 +71,7 @@ const UserHomeDashboardScreen = () => {
                                 <p className=" text-xs text-gray-400">aybamz181@gmail.com</p>
                             </div>
                         </div>
+
                         <div className="mt-5 flex items-center space-x-2" >
                             <div className="">
                                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,6 +82,19 @@ const UserHomeDashboardScreen = () => {
                             <div className="">
                                 <h6 className=" text-gray-800 font-medium text-sm">Phone Num</h6>
                                 <p className=" text-xs text-gray-400">07053332295</p>
+                            </div>
+                        </div>
+
+                        <div className="mt-5 flex items-center space-x-2" >
+                            <div className="">
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="36" height="36" rx="8" fill="#FFE4C2" />
+                                    <path d="M18 17.5C17.337 17.5 16.7011 17.2366 16.2322 16.7678C15.7634 16.2989 15.5 15.663 15.5 15C15.5 14.337 15.7634 13.7011 16.2322 13.2322C16.7011 12.7634 17.337 12.5 18 12.5C18.663 12.5 19.2989 12.7634 19.7678 13.2322C20.2366 13.7011 20.5 14.337 20.5 15C20.5 15.3283 20.4353 15.6534 20.3097 15.9567C20.1841 16.26 19.9999 16.5356 19.7678 16.7678C19.5356 16.9999 19.26 17.1841 18.9567 17.3097C18.6534 17.4353 18.3283 17.5 18 17.5ZM18 8C16.1435 8 14.363 8.7375 13.0503 10.0503C11.7375 11.363 11 13.1435 11 15C11 20.25 18 28 18 28C18 28 25 20.25 25 15C25 13.1435 24.2625 11.363 22.9497 10.0503C21.637 8.7375 19.8565 8 18 8Z" fill="#FFAD47" />
+                                </svg>
+                            </div>
+                            <div className="">
+                                <h6 className=" text-gray-800 font-medium text-sm">Location</h6>
+                                <p className=" text-xs text-gray-400">No 1 Iyaloja St. Agege, Lagos</p>
                             </div>
                         </div>
                     </div>
@@ -196,4 +157,4 @@ const UserHomeDashboardScreen = () => {
     )
 }
 
-export default UserHomeDashboardScreen
+export default AddBranchScreen

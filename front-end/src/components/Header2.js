@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Header2 = () => {
     return (
-        <header className="header shadow-md">
+        <header className="header shadow-md relative">
             <div className=" h-20  max-w-7xl mx-auto flex items-center justify-between">
                 <div className="">
                     <svg width="163" height="36" viewBox="0 0 163 36" fill="none" xmlns="http://www.w3.org/2000/svg">
